@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baixe o Creio</title>
+  <meta name="description" content="Creio, o app católico para fortalecer a sua fé. Baixe na App Store ou no Google Play.">
+  <meta property="og:title" content="Baixe o Creio">
+  <meta property="og:description" content="O app católico para fortalecer a sua fé.">
+  <meta property="og:image" content="https://creio-tech.github.io/creio-site/icone.webp">
+  <link rel="icon" href="icone.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="icone.webp">
+  <script>
+    // Link da bio do Instagram: manda cada pessoa para a loja do seu aparelho.
+    // Quem abre no computador fica nesta página, com os dois botões.
+    var STORES = {
+      ios: "https://apps.apple.com/br/app/id6469705315",
+      android: "https://play.google.com/store/apps/details?id=br.com.creio.app&referrer=utm_source%3Dinstagram%26utm_medium%3Dbio"
+    };
+
+    function storeFor(userAgent, touchPoints) {
+      if (/android/i.test(userAgent)) return "android";
+      if (/iphone|ipad|ipod/i.test(userAgent)) return "ios";
+      // O iPad se apresenta como Mac; o que o distingue é a tela de toque.
+      if (/macintosh/i.test(userAgent) && touchPoints > 1) return "ios";
+      return null;
+    }
+
+    var store = storeFor(navigator.userAgent, navigator.maxTouchPoints || 0);
+    // ?ver=1 mostra a página sem redirecionar, para conferir como ela fica.
+    if (store && !/[?&]ver=1/.test(location.search)) {
+      location.replace(STORES[store]);
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,380;1,6..72,380&family=Noto+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf9fe;
+      --text: #45454f;
+      --muted: #8f8f97;
+      --line: rgba(69, 69, 79, 0.14);
+      --lilac: #a874dc;
+      --blue: #5b8bec;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(60% 45% at 8% 6%, rgba(168, 116, 220, 0.30), transparent 70%),
+        radial-gradient(45% 55% at 100% 50%, rgba(91, 139, 236, 0.26), transparent 70%),
+        radial-gradient(70% 40% at 50% 100%, rgba(137, 180, 255, 0.26), transparent 70%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 48px 16px;
+    }
+    main { max-width: 560px; width: 100%; text-align: center; }
+    .icon {
+      width: 96px; height: 96px; border-radius: 23px;
+      box-shadow: 0 18px 40px rgba(69, 69, 79, 0.14);
+      display: block; margin: 0 auto 32px;
+    }
+    h1 {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 380;
+      font-size: clamp(34px, 7vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin: 0 0 14px;
+    }
+    h1 em {
+      font-style: italic;
+      background: linear-gradient(90deg, var(--lilac), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    p {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 380;
+      font-size: clamp(18px, 3vw, 21px);
+      line-height: 1.45;
+      margin: 0 auto 36px;
+      max-width: 440px;
+    }
+    .stores { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .store {
+      display: inline-flex; align-items: center; gap: 10px;
+      min-width: 220px; padding: 14px 22px;
+      border-radius: 14px; border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.55);
+      color: var(--text); text-decoration: none;
+      font-size: 15px; font-weight: 500;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      backdrop-filter: blur(6px);
+    }
+    .store:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(69, 69, 79, 0.12); background: rgba(255,255,255,0.8); }
+    .store svg { width: 22px; height: 22px; flex: none; }
+    .store small { display: block; font-size: 11px; font-weight: 400; color: var(--muted); line-height: 1.2; }
+    .store span { text-align: left; line-height: 1.2; }
+    @media (max-width: 420px) {
+      .store { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="icon" src="icone.webp" alt="Ícone do app Creio" width="96" height="96">
+    <h1>Baixe o <em>Creio</em></h1>
+    <p>Reflexões, a Bíblia completa, a liturgia de cada dia e orações, tudo em um só app.</p>
+    <div class="stores">
+      <a class="store" id="ios" href="https://apps.apple.com/br/app/id6469705315" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.37 12.68c.02 2.86 2.5 3.81 2.53 3.82-.02.07-.4 1.36-1.3 2.69-.78 1.15-1.6 2.3-2.88 2.32-1.26.02-1.66-.75-3.1-.75s-1.89.73-3.08.77c-1.24.05-2.18-1.24-2.97-2.39-1.62-2.34-2.85-6.62-1.19-9.5.83-1.43 2.3-2.34 3.9-2.36 1.22-.02 2.37.82 3.11.82.74 0 2.14-1.01 3.6-.86.61.03 2.34.25 3.44 1.86-.09.06-2.05 1.2-2.03 3.58zM13.99 5.6c.66-.8 1.1-1.9.98-3-.95.04-2.1.63-2.78 1.43-.61.7-1.14 1.83-1 2.91 1.06.08 2.14-.54 2.8-1.34z"/></svg>
+        <span><small>Disponível na</small>App Store</span>
+      </a>
+      <a class="store" id="android" href="https://play.google.com/store/apps/details?id=br.com.creio.app&amp;referrer=utm_source%3Dinstagram%26utm_medium%3Dbio" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.7 2.2l-.1.1zm12.5 12.5-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.7 2.1-.1-.1zm-.1.1-3.2-3.2L3.6 21.8c.3.4.9.4 1.6 0l10.8-6.9zM3.6 2.2l9.2 9.2 3.2-3.2L5.2 1.3c-.7-.4-1.3-.3-1.6.1v.8z"/></svg>
+        <span><small>Disponível no</small>Google Play</span>
+      </a>
+    </div>
+  </main>
+</body>
+</html>
